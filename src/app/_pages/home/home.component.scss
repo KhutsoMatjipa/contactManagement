@@ -1,0 +1,26 @@
+tr:nth-child(even) {
+    background-color: #CECECE;
+    color: #383838;
+}
+
+table td {
+  border:  1px solid #ddd;
+  text-align: center;
+}
+
+th{
+  border: none;
+  text-align: center;
+}
+
+.modalBtn {
+    cursor: pointer;
+}
+
+.details li {
+    list-style: none;
+}
+li {
+    margin-bottom:10px;
+    
+}
