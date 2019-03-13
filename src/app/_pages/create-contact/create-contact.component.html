@@ -1,3 +1,78 @@
-<p>
-  create-contact works!
-</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+            <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+            <form class="form-horizontal" action='' method="POST">
+                <fieldset>
+                  <div id="legend">
+                    <legend class="">Register Contact</legend>
+                  </div>
+                  <div class="control-group">
+                    <!-- f_name -->
+                    <label class="control-label"  for="f_name">First name</label>
+                    <div class="controls">
+                      <input type="text" id="f_name" #f_name placeholder="" class="input-xlarge">
+                    </div>
+                  </div>
+               
+                  <div class="control-group">
+                    <!-- l_name -->
+                    <label class="control-label"  for="l_name">Last name</label>
+                    <div class="controls">
+                      <input type="text" id="l_name" #l_name placeholder="" class="input-xlarge">
+                    </div>
+                  </div>
+
+                    <div class="control-group">
+                      <!-- company -->
+                      <label class="control-label"  for="company">Company</label>
+                      <div class="controls">
+                        <input type="text" id="company" #company placeholder="" class="input-xlarge">
+                      </div>
+                    </div>
+
+                    <div class="control-group">
+                      <!-- email -->
+                      <label class="control-label"  for="email">Email</label>
+                      <div class="controls">
+                        <input type="text" id="email" #email placeholder="" class="input-xlarge">
+                      </div>
+                    </div>
+
+                    <div class="control-group">
+                      <!-- cell_phone -->
+                      <label class="control-label"  for="cell_phone">Cell phone</label>
+                      <div class="controls">
+                        <input type="text" id="cell_phone" #cell_phone placeholder="" class="input-xlarge">
+                      </div>
+                    </div>
+
+                    <div class="control-group">
+                      <!-- office_phone -->
+                      <label class="control-label"  for="office_phone">Office phone</label>
+                      <div class="controls">
+                        <input type="text" id="office_phone" #office_phone placeholder="" class="input-xlarge">
+                      </div>
+                    </div>
+
+                    <div class="control-group">
+                      <!-- dof -->
+                      <label class="control-label"  for="dof">Date of Birth</label>
+                      <div class="controls">
+                        <input type="text" id="dof" #dof placeholder="" class="input-xlarge">
+                      </div>
+                    </div>
+                </fieldset>
+              </form>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-4 col-xs-12 col-sm-offset-6 col-lg-offset-4">
+      </div>
+      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <button type="button" class="btn btn-primary" (click)="createContact();">Create</button>
+      </div>
+    </div>
+</div>

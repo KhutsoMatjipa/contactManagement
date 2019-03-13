@@ -1,6 +1,7 @@
 <div class="container-fluid">
 
 <h1>Contacts</h1>
+<h3>Click on contact name to view.</h3>
 
 <table style="width:100%">
   <tr>
@@ -15,8 +16,8 @@
     <th></th>
   </tr>
   <tr *ngFor="let contact of contacts" >
-    <td >{{contact.id}}</td>
-    <td><a class="modalBtn" data-toggle="modal" data-target="#myModal" (click)=viewContact(contact);>{{contact.f_name}}</a></td>
+    <td>{{contact.id}}</td>
+    <td><a class="modalBtn" data-toggle="modal" data-target="#viewContactMoal" (click)=viewContact(contact);>{{contact.f_name}}</a></td>
     <td>{{contact.l_name}}</td>
     <td>{{contact.company}}</td>
     <td>{{contact.email}}</td>
@@ -26,13 +27,19 @@
 
     <td>
     <button (click)="deleteContact(contact.id)">Delete</button>
-    <button (click)="updateContact(contact)">Update</button>
+    <button data-toggle="modal" data-target="#editContactModal" (click)=viewContact(contact);>Update</button>
     </td>
+  </tr>
+  <tr>
+      <td style="border: none; background-color: white;" colspan="9">&nbsp;</td>
+    </tr>
+  <tr>
+    <td style="border: none; background-color: white;" colspan="9"><button data-toggle="modal" data-target="#createContactModal" class="btn btn-primary">Creat New Contact</button></td>
   </tr>
 </table>
 
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
+  <!-- View Contact Modal -->
+  <div class="modal fade" id="viewContactMoal">
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
       
@@ -50,15 +57,15 @@
                 </div>
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="container">
-                      <h2>{{f_name}} {{l_name}}</h2>
+                      <h2>{{contactObj.f_name}} {{contactObj.l_name}}</h2>
                     </div>
                       <hr>
                     <ul class="container details">
-                      <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{company}}</p></li>
-                      <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{email}}</p></li>
-                      <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>{{cell_phone}}</p></li>
-                      <li><p><span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>{{office_phone}}</p></li>
-                      <li><p><span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>{{dof}}</p></li>
+                      <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>{{contactObj.company}}</p></li>
+                      <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{contactObj.email}}</p></li>
+                      <li><p><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>{{contactObj.cell_phone}}</p></li>
+                      <li><p><span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>{{contactObj.office_phone}}</p></li>
+                      <li><p><span class="glyphicon glyphicon-new-window one" style="width:50px;"></span>{{contactObj.dof}}</p></li>
                     </ul>
                 </div>
             </div>
@@ -72,5 +79,195 @@
       </div>
     </div>
   </div>
+
+  <!-- Edit Contact Modal -->
+  <div class="modal fade" id="editContactModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Details</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+                </div>
+                <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                    <div class="container">
+                        <form class="form-horizontal" action='' method="POST">
+                          <fieldset>
+                            <div id="legend">
+                              <legend class="">Update Contact</legend>
+                            </div>
+                            <div class="control-group">
+                              <!-- f_name -->
+                              <label class="control-label"  for="f_name">First name</label>
+                              <div class="controls">
+                                <input type="text" id="f_name" #f_name placeholder="" class="input-xlarge">
+                              </div>
+                            </div>
+                          
+                            <div class="control-group">
+                              <!-- l_name -->
+                              <label class="control-label"  for="l_name">Last name</label>
+                              <div class="controls">
+                                <input type="text" id="l_name" #l_name placeholder="" class="input-xlarge">
+                              </div>
+                            </div>
+          
+                              <div class="control-group">
+                                <!-- company -->
+                                <label class="control-label"  for="company">Company</label>
+                                <div class="controls">
+                                  <input type="text" id="company" #company placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- email -->
+                                <label class="control-label"  for="email">Email</label>
+                                <div class="controls">
+                                  <input type="text" id="email" #email placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- cell_phone -->
+                                <label class="control-label"  for="cell_phone">Cell phone</label>
+                                <div class="controls">
+                                  <input type="text" id="cell_phone" #cell_phone placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- office_phone -->
+                                <label class="control-label"  for="office_phone">Office phone</label>
+                                <div class="controls">
+                                  <input type="text" id="office_phone" #office_phone placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- dof -->
+                                <label class="control-label"  for="dof">Date of Birth</label>
+                                <div class="controls">
+                                  <input type="text" id="dof" #dof placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+                          </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateContact();">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
   
-</div>
+  <!-- Create Contact Modal -->
+  <div class="modal fade" id="createContactModal">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Details</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                    <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+                  </div>
+                  <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                      <div class="container">
+                          <form class="form-horizontal" action='' method="POST">
+                          <fieldset>
+                            <div id="legend">
+                              <legend class="">Register Contact</legend>
+                            </div>
+                            <div class="control-group">
+                              <!-- f_name -->
+                              <label class="control-label"  for="f_namecrt">First name</label>
+                              <div class="controls">
+                                <input type="text" #f_namecrt placeholder="">
+                              </div>
+                            </div>
+                          
+                            <div class="control-group">
+                              <!-- l_name -->
+                              <label class="control-label"  for="l_namecrt">Last name</label>
+                              <div class="controls">
+                                <input type="text" id="l_namecrt" #l_namecrt placeholder="" class="input-xlarge">
+                              </div>
+                            </div>
+          
+                              <div class="control-group">
+                                <!-- company -->
+                                <label class="control-label"  for="companycrt">Company</label>
+                                <div class="controls">
+                                  <input type="text" id="companycrt" #companycrt placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- email -->
+                                <label class="control-label"  for="emailcrt">Email</label>
+                                <div class="controls">
+                                  <input type="text" id="emailcrt" #emailcrt placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- cell_phone -->
+                                <label class="control-label"  for="cell_phonecrt">Cell phone</label>
+                                <div class="controls">
+                                  <input type="text" id="cell_phonecrt" #cell_phonecrt placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- office_phone -->
+                                <label class="control-label"  for="office_phonecrt">Office phone</label>
+                                <div class="controls">
+                                  <input type="text" id="office_phonecrt" #office_phonecrt placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+          
+                              <div class="control-group">
+                                <!-- dof -->
+                                <label class="control-label"  for="dofcrt">Date of Birth</label>
+                                <div class="controls">
+                                  <input type="text" id="dofcrt" #dofcrt placeholder="" class="input-xlarge">
+                                </div>
+                              </div>
+                          </fieldset>
+                        </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createContact();">Create</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>

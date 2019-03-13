@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +22,8 @@ import { HomeComponent } from './_pages/home/home.component';
     BrowserModule,
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(DataService),
-    HttpClientModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ContactsService
